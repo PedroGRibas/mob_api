@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mob <%= index %></title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <h1>
+        <%= nome %>
+    </h1>
+    <img src="<%= picture %>" alt="" srcset="">
+    <ul>
+        <li>
+            <p id="index"><%= index %></p>
+       
+        </li>
+        <li>
+            Altura: <%= size %> cm
+        </li>
+        <li>
+            Idade: <%= age %> anos
+        </li>
+        <li>
+            Força: <%= atck %> pontos
+        </li>
+        <li>
+            Velocidade: <%= spd %> pontos
+        </li>
+        <li>
+            Classe: <%= classe %> 
+        </li>
+        <li>
+            Raça: <%= raca %> 
+        </li>
+        <li>
+            Aliado: <%= aliado %> 
+        </li>
+    </ul>
+    <% if(before == true) {%>
+        <button>
+            Anterior
+        </button>    
+    <% } %>
+    <% if(next == true) {%>
+        <button>
+            Próximo
+        </button>    
+    <% } %>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
