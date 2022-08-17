@@ -119,6 +119,18 @@ router.get("/:id", async (req, res, next) => {
     }
 });
 
+router.delete("/:id", async (req, res, next) => {
+    try {
+        const data = JSON.parse(await readFile(global.fileName));    
+        data.mobs = data.mobs.filter(
+            mob => mob.index !== parseInt(req.params.id));        
+            await writeFile(global.fileName, JSON.stringify(data, null, 2));        
+            res.end();
+            logger.info(`DELETE /mob/:id - ${req.params.id}`)
+    } catch (err) {
+        next(err);  
+    }
+});
 
 
 router.get("/classe/:classe", async (req, res, next) => {
@@ -137,7 +149,7 @@ router.get("/classe/:classe", async (req, res, next) => {
             }
         })
         
-        console.log(dataToRender)
+        console.log(dataToRender)   
         
         res.send(dataToRender);
 
@@ -145,6 +157,38 @@ router.get("/classe/:classe", async (req, res, next) => {
         next(err);
     }
 });
+
+//pega os maiores ataques de uma classe e pega a soma de todos os ataques e uma média do ataque
+router.get("/maiores/:classe", async(req, res, next)=> {
+    try {
+        const data = JSON.parse(await readFile(global.fileName));    
+        const classe = req.params.classe
+        if (classe != "assassino" && classe != "atirador" && classe != "tanque" && classe != "ladrao" && classe != "lutador" && classe != "mago") {
+            throw new Error("DIGITE A CLASSE CERTA!!!");
+        }
+        let atckTotal = 0
+        let dataClasse = []
+        let maiores = []
+        let media = 0
+        dataClasse = data.mobs.filter(element => {
+            if (element.classe == classe) {
+                atckTotal += element.atck;
+                media ++
+                return true
+
+            }
+        })
+        media = atckTotal/media
+        maiores = dataClasse.sort((a, b) => {
+            return Number(b.atck) - Number(a.atck)
+        })
+        maiores =  maiores.slice(0, 3);
+        media = media.toFixed(2);
+       res.send({maiores: maiores, atckTotal: atckTotal, média: media});    
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 //exportando o routes
 export default router;

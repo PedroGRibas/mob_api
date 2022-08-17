@@ -276,7 +276,7 @@
     },
     {
       "index": 21,
-      "nome": "abcds",
+      "nome": "aaaa",
       "size": 1395,
       "age": 204,
       "atck": 43,
@@ -302,16 +302,16 @@
     },
     {
       "index": 23,
-      "nome": "abcds",
-      "size": 1395,
-      "age": 204,
-      "atck": 43,
-      "spd": 92,
-      "hp": 174,
-      "classe": "tanque",
-      "picture": "https://app.pixelencounter.com/api/basic/monsters/195/png",
+      "nome": "Ijakaci",
+      "size": 1734,
+      "age": 138,
+      "atck": 88,
+      "spd": 22,
+      "hp": 858,
+      "classe": "ladrao",
+      "picture": "https://app.pixelencounter.com/api/basic/monsters/55/png",
       "aliado": true,
-      "raca": "Humano"
+      "raca": "Elemental"
     },
     {
       "index": 24,
