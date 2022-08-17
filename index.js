@@ -12,11 +12,10 @@ const port = 3000;
 global.fileName = "monstrinhos.json";
 
 const app = express();
-
+app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'view'));
 app.set('view engine', 'ejs');
-
 
 
 app.listen(port, async () => {    
